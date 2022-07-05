@@ -1,0 +1,65 @@
+doctype html
+
+block vars
+
+html(lang='en')
+
+    head
+
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name='description', content='')
+        meta(name='author', content='')
+
+        title TreasuryViewer#{title}
+
+        link(rel='icon', type='image/x-icon', href='assets/favicon.png')
+
+        // Bootstrap icons
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css', rel='stylesheet')
+
+        // Google fonts
+        link(rel='preconnect', href='https://fonts.gstatic.com')
+        link(href='https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&display=swap', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&display=swap', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&display=swap', rel='stylesheet')
+
+        // Core theme CSS (includes Bootstrap)
+        link(href='css/styles.css', rel='stylesheet')
+
+        block extra_header
+
+    body#page-top
+
+        // Navigation
+        nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.shadow-sm
+            .container.px-5
+                a.navbar-brand.fw-bold(href='/')
+                    img.d-inline-block.align-text-top(src='assets/favicon.png', style={'width': '1.5em', 'height': '1.5em'})
+                    span(style={'padding-left': '4px', 'padding-top': '5px', 'display': 'inline-block'}) TreasuryViewer
+                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+                    | Menu
+                    i.bi-list
+                #navbarResponsive.collapse.navbar-collapse
+                    ul.navbar-nav.ms-auto.me-4.my-3.my-lg-0
+                        block navlinks
+
+        block content
+
+        // Footer
+        footer.bg-black.text-center.py-5
+            .container.px-5
+                .text-white-50.small
+                    .mb-2 TreasuryViewer LLC. All Rights Reserved.
+                    a(href='privacy.html') Privacy
+                    span.mx-1 &middot;
+                    a(href='terms.html') Terms
+                    span.mx-1 &middot;
+                    a(href='mailto:contact@treasuryviewer.com') contact@treasuryviewer.com
+        
+        // Bootstrap core JS
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js')
+
+        // Core theme JS
+        script(src='js/scripts.js')
+
