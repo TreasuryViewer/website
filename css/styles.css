@@ -2446,6 +2446,8 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + 2px); }
 
 html { scroll-padding-top: 4.5rem; }
 
+.clearfix::after { content: ""; clear: both; display: table; }
+
 .bg-black { background-color: #000 !important; }
 
 .bg-gradient-primary-to-secondary { background: linear-gradient(45deg, #66BB6A, #66BB6A) !important; }
@@ -2553,10 +2555,50 @@ footer a:hover, footer a:active, footer a:focus { color: rgba(255, 255, 255, 0.7
 
 @media (min-width: 1400px) { .masthead .masthead-device-mockup .circle { width: 70%; } .masthead .masthead-device-mockup .device-wrapper { max-width: 17rem; } }
 
-.text-container { padding-top: 7.5rem; padding-bottom: 3rem; }
+.legal-markdown { padding-top: 7.5rem; padding-bottom: 3rem; }
 
 .legal-markdown h1, .legal-markdown .h1 { padding-top: 20px; }
 
 .legal-markdown h2, .legal-markdown .h2, .legal-markdown h3, .legal-markdown .h3 { padding-top: 10px; }
+
+.post-splash { background: no-repeat center center; background-color: black; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/img/treasury_building.jpg"); padding-top: 16.5rem; padding-bottom: 12rem; color: white; }
+
+.post-title { font-size: 50px; }
+
+.post-subtitle { font-size: 26px; font-weight: 600; line-height: 1.1; margin-top: 25px; }
+
+.post-attrib { font-size: 20px; line-height: 1.1; margin-top: 30px; font-style: italic; font-weight: 400; }
+
+.post-markdown { font-size: 20px; line-height: 1.6; overflow-wrap: anywhere; }
+
+.post-markdown p { margin: 30px 0; }
+
+.post-markdown h1, .post-markdown .h1 { padding-top: 20px; }
+
+.post-markdown h2, .post-markdown .h2, .post-markdown h3, .post-markdown .h3 { padding-top: 10px; }
+
+.post-markdown blockquote { background: #f9f9f9; border-left: 10px solid #ccc; padding: 0.5em 10px; }
+
+.older-post { display: inline-block; margin-bottom: 20px; float: right; }
+
+.newer-post { display: inline-block; margin-bottom: 20px; float: left; }
+
+.main-blog-title { font-size: 72px; text-align: center; font-weight: bold; }
+
+.main-blog-subtitle { font-size: 32px; text-align: center; margin-top: 20px; }
+
+.post-listing { padding: 30px 0; }
+
+.post-listing .listing-link:hover h1, .post-listing .listing-link:hover .h1, .post-listing .listing-link:active h1, .post-listing .listing-link:active .h1 { text-decoration: underline; }
+
+.post-listing .listing-link { text-decoration: none; }
+
+.post-listing .listing-title { font-size: 36px; }
+
+.post-listing .listing-subtitle { font-size: 24px; line-height: 1.1; margin-top: 12px; }
+
+.post-listing .listing-attrib { font-size: 18px; margin-top: 20px; font-style: italic; }
+
+.all-listings { padding-top: 50px; padding-bottom: 30px; }
 
 /*# sourceMappingURL=styles.css.map */
