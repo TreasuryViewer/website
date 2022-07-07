@@ -1,0 +1,53 @@
+---
+layout: default
+navlinks: blog_post_navlinks.html
+---
+
+<header class="post-splash">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-9 mx-auto">
+                <h1 class="post-title">
+                    {{ page.title }}
+                </h1>
+                <div class="post-subtitle">
+                    {{ page.subtitle }}
+                </div>
+                <div class="post-attrib">
+                    By {{ page.author }} on {{ page.date | date_to_long_string: "ordinal", "US" }}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="col-lg-7 col-md-9 mx-auto">
+        <div class="post-markdown pt-5">
+            {{ content }}
+        </div>
+
+        <hr class="mt-5 mb-4">
+
+        <div style="width: 100%;" class="clearfix">
+            {% if page.next.url %}
+            <a class="btn btn-primary newer-post text-light" href="{{ page.next.url }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ page.next.title }}"><i class="bi bi-chevron-left"></i> Newer Post</a>
+            {% endif %}
+            {% if page.previous.url %}
+            <a class="btn btn-primary older-post text-light" href="{{ page.previous.url }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ page.previous.title }}">Older Post <i class="bi bi-chevron-right"></i></span></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("load", ()=> {
+        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+

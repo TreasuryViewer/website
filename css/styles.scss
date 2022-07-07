@@ -17,13 +17,19 @@
 // Global CSS
 @import "global.scss";
 
-// Components
-@import "components/navbar.scss";
-@import "components/device-mockup.scss";
+// Navbar
+@import "navbar.scss";
 
-// Sections
-@import "sections/cta.scss";
-@import "sections/features.scss";
-@import "sections/footer.scss";
-@import "sections/masthead.scss";
-@import "sections/textpages.scss";
+// Index
+@import "index/device-mockup.scss";
+@import "index/cta.scss";
+@import "index/features.scss";
+@import "index/footer.scss";
+@import "index/masthead.scss";
+
+// Legal page
+@import "legal.scss";
+
+// Blog
+@import "blog_post.scss";
+

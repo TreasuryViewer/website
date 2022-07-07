@@ -1,0 +1,110 @@
+// Blog post pages
+
+.post-splash {
+    background: no-repeat center center;
+    background-color: black;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/img/treasury_building.jpg');
+    padding-top: 12rem + 4.5rem;
+    padding-bottom: 12rem;
+    color: white;
+}
+
+.post-title {
+    font-size: 50px;
+}
+
+.post-subtitle {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-top: 25px;
+}
+
+.post-attrib {
+    font-size: 20px;
+    line-height: 1.1;
+    margin-top: 30px;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.post-markdown {
+    font-size: 20px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+
+    p { 
+        margin: 30px 0;
+    }
+
+    h1 {
+        padding-top: 20px;
+    }
+    h2, h3 {
+        padding-top: 10px;
+    }
+
+    blockquote {
+      background: #f9f9f9;
+      border-left: 10px solid #ccc;
+      padding: 0.5em 10px;
+    }
+}
+
+.older-post {
+    display: inline-block;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.newer-post {
+    display: inline-block;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.main-blog-title {
+    font-size: 72px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.main-blog-subtitle {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.post-listing {
+    padding: 30px 0;
+
+    .listing-link:hover,.listing-link:active {
+        h1 {
+            text-decoration: underline;
+        }
+    }
+
+    .listing-link {
+        text-decoration: none;
+    }
+
+    .listing-title {
+        font-size: 36px;
+    }
+    .listing-subtitle {
+        font-size: 24px;
+        line-height: 1.1;
+        margin-top: 12px;
+    }
+
+    .listing-attrib {
+        font-size: 18px;
+        margin-top: 20px;
+        font-style: italic;
+    }
+}
+
+.all-listings {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}

@@ -13,6 +13,12 @@ html {
 
 // Custom utilities
 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .bg-black {
     background-color: $black !important;
 }

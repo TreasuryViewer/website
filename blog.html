@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<header class="post-splash">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-9 mx-auto">
+                <div class="main-blog-title">
+                    Blog
+                </div>
+                <div class="main-blog-subtitle">
+                    Financial tips about fixed income securities
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="col-lg-7 col-md-9 mx-auto">
+        <div class="all-listings">
+            {% for post in site.posts %}
+                <div class="post-listing">
+                    <a href="{{ post.url }}" class="text-reset listing-link">
+                        <div>
+                            <h1 class="listing-title">{{ post.title }}</h1>
+                            <div class="listing-subtitle">{{ post.subtitle }}</div>
+                            <div class="listing-attrib text-muted">
+                                By {{ post.author }} on {{ post.date | date_to_long_string: "ordinal", "US" }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
