@@ -5,7 +5,7 @@
 */
 
 window.addEventListener('DOMContentLoaded', event => {
-    let android_url = "android.com";
+    let android_url = "https://play.google.com/store/apps/details?id=com.treasuryviewer.treasuryviewer";
     let apple_url = "https://apps.apple.com/us/app/treasuryviewer/id1632859091";
 
     let app_store_url;
@@ -13,8 +13,7 @@ window.addEventListener('DOMContentLoaded', event => {
     if(/iPad|iPhone|iPod/i.test(userAgent)) app_store_url=apple_url;
     else app_store_url=android_url;
 
-    // document.getElementById("download-button").href = app_store_url;
-    document.getElementById("download-button").href = apple_url;
+    document.getElementById("download-button").href = app_store_url;
 
     for (let e of document.getElementsByClassName('apple-link'))
         e.href = apple_url;
