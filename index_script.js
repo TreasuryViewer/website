@@ -6,7 +6,7 @@
 
 window.addEventListener('DOMContentLoaded', event => {
     let android_url = "https://play.google.com/store/apps/details?id=com.treasuryviewer.treasuryviewer";
-    let apple_url = "https://apps.apple.com/us/app/treasuryviewer/id1632859091";
+    let apple_url = "https://apps.apple.com/app/apple-store/id1632859091?pt=125244306&ct=Website&mt=8";
 
     let app_store_url;
     const userAgent = navigator.userAgent;
