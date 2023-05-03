@@ -1,8 +1,8 @@
-https://treasuryviewer.com/blog.html
-https://treasuryviewer.com/
-https://treasuryviewer.com/privacy.html
-https://treasuryviewer.com/sitemap.txt
-https://treasuryviewer.com/css/styles.css
-https://treasuryviewer.com/terms.html
+http://localhost:4000/blog.html
+http://localhost:4000/
+http://localhost:4000/privacy.html
+http://localhost:4000/sitemap.txt
+http://localhost:4000/css/styles.css
+http://localhost:4000/terms.html
 
 
