@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta name="description" content="I-Bonds value and growth calculator. Input when you bought your I-Bonds to graph and view table its value and interest rate over time.">
+        
+        <meta charset="utf-8" />
+
+        
+        
+
+        <title>TreasuryViewer</title>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-X784KVKRF1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-X784KVKRF1');
+        </script>
+    </head>
+
+    <body id="page-top" style="min-height: 100vh; display: flex; flex-direction: column;">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container-lg px-5">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img class="d-inline-block align-text-top" src="/favicon.png" style="width: 1.5em; height: 1.5em" />
+                    <span style="padding-left: 4px; padding-top: 5px; display: inline-block">TreasuryViewer</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        
+                            <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Features</a></li>
+<li class="nav-item"><a class="nav-link me-lg-3" href="#download">Download</a></li>
+<li class="nav-item"><a class="nav-link me-lg-3" href="/blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link me-lg-3" href="/calculator.html">I-Bonds Calculator</a></li>
+
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <style>
+    html, body {
+        min-width: 1250px;
+    }
+</style>
+
+<div style="margin-top: 120px; margin-left: auto; margin-right: auto;">
+    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="display: inline; margin: 0;">I-Bonds Calculator</h2>
+        <span id="permalink_cont" hidden>
+            <a href="javascript:void(0);" id="permalink_link">Copy Permalink</a>
+            <span id="permalink_success" hidden>Copied!</span>
+        </span>
+    </div>
+    <div style="width:100%; margin-top: 35px; display: flex; justify-content: space-between;">
+        <div style="display: inline-block;">
+            <label for="month" class="form-label">Purchase Month</label>
+            <div class="input-group" style="width: fit-content; padding-right: 20px;">
+                <select id="month" class="form-select" style="width: 15ch;">
+                    <option selected value='1'>January</option>
+                    <option value='2'>February</option>
+                    <option value='3'>March</option>
+                    <option value='4'>April</option>
+                    <option value='5'>May</option>
+                    <option value='6'>June</option>
+                    <option value='7'>July</option>
+                    <option value='8'>August</option>
+                    <option value='9'>September</option>
+                    <option value='10'>October</option>
+                    <option value='11'>November</option>
+                    <option value='12'>December</option>
+                </select>
+                <input type="number" id="year" maxlength="4" class="form-control" style="width: 10ch;">
+            </div>
+            <div style="display: flex;">
+                <div style="flex-grow: 1; width: 0;">
+                    <span id="month_error" class="form-text text-danger" hidden></span>
+                </div>
+            </div>
+        </div>
+        <div style="display:inline-block;">
+            <label for="month" class="form-label">Initial Principal</label>
+            <div class="input-group" style="width: fit-content;">
+                <span class="input-group-text">$</span>
+                <input type="number" id="principal" min="0" step="25" class="form-control" style="width: 20ch;">
+            </div>
+            <div style="display: flex;">
+                <div style="flex-grow: 1; width: 0;">
+                    <span id="principal_error" class="form-text text-danger" hidden>You can only buy I-Bonds in multiples of $25</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="width:1258px; height: 1px;"></div>
+
+    <div id="output" hidden style="width: 100%; margin-top: 35px; margin-bottom: 30px;">
+        <div class="row">
+            <div class="col-4">
+                <div class="lead">Current Value:</div>
+                <div class="fs-2 fw-bold" id="current_value"></div>
+                <div class="mt-4">Current Rate: <span id="current_rate"></span>%</div>
+                <div class="mt-2">Fixed Rate: <span id="fixed_rate"></span>%</div>
+                <div class="mt-2">Current Inflation: <span id="current_inflation"></span>%</div>
+            </div>
+            <div class="col-8">
+                <div id="chart_output" style="width: 100%;">
+                    <canvas id="chart_canvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5" style="width: 100%; text-align: right;">
+            <a href="javascript:void(0)" class="text-primary" id="download_link">Download as CSV</a>
+        </div>
+
+        <table class="mt-2 table table-striped">
+            <thead>
+                <tr class="table-primary">
+                    <th></th>
+                    <th>Jan 1</th>
+                    <th>Feb 1</th>
+                    <th>Mar 1</th>
+                    <th>Apr 1</th>
+                    <th>May 1</th>
+                    <th>Jun 1</th>
+                    <th>Jul 1</th>
+                    <th>Aug 1</th>
+                    <th>Sep 1</th>
+                    <th>Oct 1</th>
+                    <th>Nov 1</th>
+                    <th>Dec 1</th>
+                </tr>
+            </thead>
+            <tbody id="value_table_body">
+            </tbody>
+        </table>
+
+        <div class="h4 mt-5">Rate Changes</div>
+        <table class="mt-2 mb-5 w-auto table table-striped">
+            <thead>
+                <tr class="table-primary">
+                    <th>Month Applied</th>
+                    <th>Inflation Rate</th>
+                    <th>Composite Rate</th>
+                </tr>
+            </thead>
+            <tbody id="rates_table_body">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>let ibonds_data=JSON.parse('{"fixed": {"24280": 0.9, "24274": 0.4, "24268": 0.0, "24262": 0.0, "24256": 0.0, "24250": 0.0, "24244": 0.0, "24238": 0.2, "24232": 0.5, "24226": 0.5, "24220": 0.3, "24214": 0.1, "24208": 0.0, "24202": 0.0, "24196": 0.1, "24190": 0.1, "24184": 0.0, "24178": 0.0, "24172": 0.1, "24166": 0.2, "24160": 0.0, "24154": 0.0, "24148": 0.0, "24142": 0.0, "24136": 0.0, "24130": 0.0, "24124": 0.2, "24118": 0.3, "24112": 0.1, "24106": 0.7, "24100": 0.0, "24094": 1.2, "24088": 1.3, "24082": 1.4, "24076": 1.4, "24070": 1.0, "24064": 1.2, "24058": 1.0, "24052": 1.0, "24046": 1.1, "24040": 1.1, "24034": 1.6, "24028": 2.0, "24022": 2.0, "24016": 3.0, "24010": 3.4, "24004": 3.6, "23998": 3.4, "23992": 3.3, "23986": 3.3, "23984": 3.4}, "inflation": {"24280": 1.69, "24274": 3.24, "24268": 4.81, "24262": 3.56, "24256": 1.77, "24250": 0.84, "24244": 0.53, "24238": 1.01, "24232": 0.7, "24226": 1.16, "24220": 1.11, "24214": 1.24, "24208": 0.98, "24202": 1.38, "24196": 0.08, "24190": 0.77, "24184": -0.8, "24178": 0.74, "24172": 0.92, "24166": 0.59, "24160": 0.59, "24154": 0.88, "24148": 1.1, "24142": 1.53, "24136": 2.3, "24130": 0.37, "24124": 0.77, "24118": 1.53, "24112": -2.78, "24106": 2.46, "24100": 2.42, "24094": 1.53, "24088": 1.21, "24082": 1.55, "24076": 0.5, "24070": 2.85, "24064": 1.79, "24058": 1.33, "24052": 1.19, "24046": 0.54, "24040": 1.77, "24034": 1.23, "24028": 0.28, "24022": 1.19, "24016": 1.44, "24010": 1.52, "24004": 1.91, "23998": 1.76, "23992": 0.86, "23986": 0.86, "23984": 0.62}}');</script>
+<script src="/js/calculator.min.js"></script>
+
+
+
+
+        <div style="flex-grow:1"></div>
+
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">Treasury Viewer LLC All Rights Reserved.</div>
+                    <a href="/privacy.html">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="/terms.html">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="mailto:contact@treasuryviewer.com">contact@treasuryviewer.com</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
+
