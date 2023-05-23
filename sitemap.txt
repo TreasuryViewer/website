@@ -1,11 +1,13 @@
 https://treasuryviewer.com/blog.html
 https://treasuryviewer.com/calculator.html
-https://treasuryviewer.com/css/calculator_styles.css
 https://treasuryviewer.com/
 https://treasuryviewer.com/privacy.html
-https://treasuryviewer.com/sitemap.txt
-https://treasuryviewer.com/css/styles.css
 https://treasuryviewer.com/terms.html
-https://treasuryviewer.com/css/calculator_styles.css.map
-
+https://treasuryviewer.com/2023/03/20/taxes.html
+https://treasuryviewer.com/2023/01/09/linked-accounts.html
+https://treasuryviewer.com/2022/11/05/rate_hikes_EE_I.html
+https://treasuryviewer.com/2022/07/11/us-eu.html
+https://treasuryviewer.com/2022/06/06/ibonds-trick.html
+https://treasuryviewer.com/2022/06/04/ibonds-worth-it.html
+https://treasuryviewer.com/2022/06/04/calculating-eebonds.html
 
