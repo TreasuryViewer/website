@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta name="description" content="The yield rates for various Treasury securities as calculated from the results of the latest auctions on TreasuryDirect.gov"><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><title>TreasuryViewer</title><link rel="icon" type="image/png" href="/favicon.png"/><link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/><link href="/css/styles.css" rel="stylesheet"/> <script async src="https://www.googletagmanager.com/gtag/js?id=G-X784KVKRF1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-X784KVKRF1")</script></head><body id="page-top"> <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav"><div class="container-lg px-5"> <a class="navbar-brand fw-bold" href="/"> <img class="d-inline-block align-text-top" src="/favicon.png" style="width:1.5em;height:1.5em"/> <span style="padding-left:4px;padding-top:5px;display:inline-block">TreasuryViewer</span> </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> Menu <i class="bi-list"></i> </button><div class="collapse navbar-collapse" id="navbarResponsive"><ul class="navbar-nav ms-auto me-4 my-3 my-lg-0"><li class="nav-item"><a class="nav-link me-lg-3" href="/faq.html">FAQ</a></li><li class="nav-item"><a class="nav-link me-lg-3" href="/blog.html">Blog</a></li><li class="nav-item"><a class="nav-link me-lg-3" href="/calculator.html">I-Bonds Calculator</a></li><li class="nav-item"><a class="nav-link me-lg-3" href="/current_rates.html">Rates</a></li></ul></div></div> </nav><div class="container" style="width:750px"><h1 class="mb-2" style="margin-top: 7.5rem;">Current Fixed Income Rates</h1><div class="mb-2 lead text-muted">The yield rates from TreasuryDirect from the latest auctions</div><div class="mb-5" hidden>Last Updated: <span id="last_updated"></span></div><table id="rates_table" class="table table-hover mb-5" hidden></table><div id="loading_text" class="mt-5 mb-5 lead" style="text-align:center">Loading...</div></div><script>
+function format_percent(percent) {
+    return Number(percent/100)
+        .toLocaleString(undefined,
+        {style: 'percent', minimumFractionDigits:2}); 
+}
+
+function format_date_interval(inp) {
+    let out = "";
+    for (const c of inp) {
+        if (c===" ") out += ", ";
+        else if (!isNaN(c)) out += c;
+        else if (c===c.toUpperCase()) {
+            out += " ";
+            if (c==="Y") out += "Year";
+            else if (c==="M") out += "Month";
+            else if (c==="W") out += "Week";
+        }
+    }
+    return out;
+}
+
+async function load_auction_rates() {
+    let resp = await fetch("https://treasuryviewer-50e3b-data.web.app/research/auction_rates.json");
+
+    let last_modified = resp.headers.get("Last-Modified");
+    let modified_date = new Date(last_modified);
+    let updated_string = "";
+    if (!last_modified || isNaN(modified_date))
+        updated_string = "Unknown";
+    else if (modified_date.toDateString() === (new Date()).toDateString())
+        updated_string = "Today";
+    else
+        updated_string = modified_date.toLocaleDateString();
+
+    let data = (await resp.json()).auction_rates;
+    data.sort(function (a, b) {
+        if (a.name.toUpperCase() < b.name.toUpperCase()) return -1;
+        else return 1;
+    });
+
+    let output_html = "";
+
+    for (let asset_class of data) {
+        output_html += `
+            <thead class="lead rates_group_head"><tr><th>${asset_class.name}</th></tr></thead>
+            <tbody class="rates_table_group">`;
+
+        
+        for (let asset of asset_class.rates) {
+            let rate_prefix = "";
+            if (asset.term==="") {
+                if (asset_class.name[0]==='E') rate_prefix = "Fixed Rate";
+                else rate_prefix = "Combined Yield";
+            } else {
+                rate_prefix = format_date_interval(asset.term);
+            }
+            output_html += `<tr><td>${rate_prefix}<td>${format_percent(asset.value)}</tr>`
+        }
+        output_html += `</tbody>`;
+    }
+
+    document.getElementById("rates_table").innerHTML = output_html;
+    document.getElementById("last_updated").innerText = updated_string;
+    document.getElementById("rates_table").removeAttribute("hidden");
+    document.getElementById("last_updated").removeAttribute("hidden");
+    document.getElementById("loading_text").setAttribute("hidden", "");
+}
+
+window.onload = function() {
+    load_auction_rates();
+};
+</script><div style="flex-grow:1"></div><footer class="bg-black text-center py-5"><div class="container px-5"><div class="text-white-50 small"><div class="mb-2">Treasury Viewer LLC All Rights Reserved.</div> <a href="/privacy.html">Privacy</a> <span class="mx-1">·</span> <a href="/terms.html">Terms</a> <span class="mx-1">·</span> <a href="mailto:contact@treasuryviewer.com">contact@treasuryviewer.com</a></div></div> </footer> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script></body></html>
